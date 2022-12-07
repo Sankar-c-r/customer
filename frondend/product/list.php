@@ -10,11 +10,11 @@
     $conn = mysqli_connect($servername, $username, $password , $db);
 
 
-    $select= "SELECT * FROM customers"; 
+    $select= "SELECT * FROM pdetail"; 
 $data  =  $conn->query($select);
 while($row = $data->fetch_assoc()) {
 
-    $customer[] = $row; 
+    $list[] = $row; 
  }
 
 ?>
@@ -48,7 +48,7 @@ while($row = $data->fetch_assoc()) {
 <script>
 
 function create() {
-  location.replace("http://localhost/sankar/sunday/frondend/customer/create.php")
+  location.replace("http://localhost/sankar/sunday/frondend/product/page.php")
 }
 </script>
 
@@ -67,25 +67,23 @@ function create() {
     <div class = "my" >
 
       <div class="container">
-      <button onclick="create()">create customer detail</button>
-        <h2>customer detail</h2>
-        <p>our company customer details:</p>            
+      <button onclick="create()">upload stock</button>
+        <h2>Stock detail</h2>
+        <p>our company stock details:</p>            
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>firstname</th>
-              <th>lastname</th>
-              <th>email</th>
-              <th>phonenumber</th>
+              <th>productname</th>
+              <th>product price</th>
+              <th>stock qty</th>
             </tr>
           </thead>
           <tbody>
-          <?php foreach($customer as $ans){ ?>
+          <?php foreach($list as $ans){ ?>
             <tr>
-              <td><?php echo  $ans["firstname"] ?></td>
-              <td><?php echo  $ans["lastname"] ?></td>
-              <td><?php echo  $ans["email"] ?></td>
-              <td><?php echo  $ans["phnumber"] ?></td>
+              <td><?php echo  $ans["productname"] ?></td>
+              <td><?php echo  $ans["productprice"] ?></td>
+              <td><?php echo  $ans["productqty"] ?></td>
             </tr>
             <?php } ?>
             

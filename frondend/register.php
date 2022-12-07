@@ -1,9 +1,4 @@
-<?php
- session_start();
- if(!isset($_SESSION['user']) ){
-   header("Location:login.php");
- }
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +99,7 @@ function loge() {
 
     <hr>
     
-    <button onclick="loge()" class="registerbtn" name="register">Register</button>
+    <button type="submit" class="registerbtn" name="register">Register</button>  
   </div>
   <button onclick="myFunction()">go to login</button>
   <button ><a href = "logout.php">Logout</a></button>

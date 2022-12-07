@@ -8,6 +8,6 @@
         <div class="b"><button onclick="mine()">product</button></div>
         <button class="b"><a href = "http://localhost/sankar/sunday/frondend/logout.php">Logout</a></button>
         
-    </div>
+    </div> 
 </div>
   

@@ -31,6 +31,12 @@ button {
 
 </style>
 </head>
+<script>
+  function myFunction() {
+    location.replace("register.php")
+  }
+  </script>
+  
 <body>
   
 <h2>Login Form</h2>
@@ -42,8 +48,9 @@ button {
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required>
 
-    <label for="psw"><b>Password</b></label>
+    <div><label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
+</div>
         
     <button type="submit" name = "form_submit">Login</button>
    
@@ -51,11 +58,6 @@ button {
   
   <button onclick="myFunction()">go to register</button>
 
-  <script>
-  function myFunction() {
-    location.replace("register.php")
-  }
-  </script>
   
   
 

@@ -11,10 +11,8 @@ if(isset($_POST ["register"]) ){
    $b  =  $_POST["email"];
    $c  =  $_POST["psw"];
    $d  =  $_POST["pswr"];
-   
-
-   
-   $mytable = "INSERT INTO css(`my_name`,`my_email`,`password`,`re_password`) VALUES('$a','$b' ,$c,$d)";              
+   $hash = password_hash($c, PASSWORD_DEFAULT);
+   $mytable = "INSERT INTO css(`my_name`,`my_email`,`password`,`re_password`) VALUES('$a','$b' ,'$hash',$d)";              
 
   
       $conn->query($mytable);
@@ -25,18 +23,25 @@ if(isset($_POST ["form_submit"]) ){
    $a  =  $_POST["uname"];
    $b  =  $_POST["psw"];
 
-   $select= "SELECT * FROM css WHERE my_name ='".$a."' AND password = '".$b."'";
+   $select= "SELECT * FROM css WHERE my_name ='".$a."' ";
     $data  =  $conn->query($select);
+    $row = mysqli_fetch_assoc($data);
+    $ans=$row["password"];  
+    $decryption=openssl_decrypt($ans);
+   
    
     
-    if($data->num_rows == 0 ){
-      header("Location:../frondend/login.php");    
-
-    }else{
+    if($b==$decryption){
 
       $_SESSION['user'] = 1;
 
-      header("Location:../frondend/index.php");      
+      header("Location:../frondend/index.php");  
+        
+
+    }else{
+
+     
+      header("Location:../frondend/login.php");      
     }
  
 
