@@ -76,6 +76,7 @@ function create() {
               <th>productname</th>
               <th>product price</th>
               <th>stock qty</th>
+              <th>image</th>
             </tr>
           </thead>
           <tbody>
@@ -84,6 +85,7 @@ function create() {
               <td><?php echo  $ans["productname"] ?></td>
               <td><?php echo  $ans["productprice"] ?></td>
               <td><?php echo  $ans["productqty"] ?></td>
+              <td><img src ="../../<?php echo $ans["things"]?>"></td>
             </tr>
             <?php } ?>
             

@@ -5,13 +5,33 @@ $password = "";
 $db = "html";
 $conn = mysqli_connect($servername, $username, $password , $db);
 
+
+
+
+
 if(isset($_POST ["submit"]) ){
+
+  $imageFileType = strtolower(pathinfo($_FILES["product_image"]["name"],PATHINFO_EXTENSION));
+
+
+$file_name  = uniqid().'.'.$imageFileType;
+
+  $apple=  "../../image/".$file_name; 
+
+  
+  move_uploaded_file($_FILES["product_image"]["tmp_name"], $apple);
+
+  $save_path = "image/".$file_name;
+
     $a  =  $_POST["productname"];
    $b  =  $_POST["productprice"];
    $c  =  $_POST["productqty"];
+
+ 
+
    
 
-$mycustomer = "INSERT INTO pdetail(`productname`,`productprice`,`productqty`) VALUES('$a',$b,$c)";              
+$mycustomer = "INSERT INTO pdetail(`productname`,`productprice`,`productqty`,`things`) VALUES('$a',$b,$c,'$save_path')";              
 
   
       $conn->query($mycustomer);
@@ -62,7 +82,7 @@ input[type=text], input[type=email] {
 <!-- Page Content -->
 <div class = "my" >
 
-    <form action="page.php" method="POST">
+    <form action="page.php" method="POST"  enctype="multipart/form-data">
   <div class="container">
     <h1>product detail</h1>
     <p>please fill the stock detail</p>
@@ -83,11 +103,15 @@ input[type=text], input[type=email] {
     <input type="text" placeholder="Qty" name="productqty"  required>
 
     </div>
+    <div>
+    <label for="name"><b>productimage</b></label>
+    <input type= "file" name= "product_image"> 
+    </div>
  <hr>
     
     <button type="submit" name="submit" class="on">submit</button>
 
-  </div>
+</div>
 </form>
 </div>
 </div>
